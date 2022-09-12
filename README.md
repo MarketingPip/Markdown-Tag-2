@@ -2,7 +2,7 @@
 
  
 <p align="center">
-  <img height="400" src="https://imgur.com/oQgTNF3.png" />
+  <img height="400" src="./.github/images/Markdown_Tag_Cover.png" />
 </p>
                                                                      
 
@@ -32,7 +32,7 @@ You can view a demo of Markdown Tag in use [here.](https://marketingpipeline.git
 
 How to use <b><i>Markdown Tag</b></i>:
 
- To render Markdown to HTML simply use a md tag - 
+ To render Markdown to HTML simply use a md tag  - example below
 
             <md>
     # Markdown Support
@@ -40,7 +40,7 @@ How to use <b><i>Markdown Tag</b></i>:
                Awesomeness
              </md>
 
-<b><i>or</i></b> add a md attribute to your HTML element - 
+<b><i>or</i></b> add a md attribute to a HTML element - example below
 
             <div md>
     # Markdown Support
@@ -117,19 +117,19 @@ How to use <b><i>GitHub Flavored Markdown Syntax</b></i>:
 
 ## Syntax Highlighting 
 
-> Note: to use Syntax Hightlighting - you must use the GitHub flavored version of <b><i>Markdown Tag</i></b>.
+> Note: to use Syntax Highlighting - you must use the GitHub flavored version of <b><i>Markdown Tag</i></b>.
 
-By **default** using a <code>github-md</code> tag or attribute will automatically add a CSS stylesheet for GitHub like syntax hightlighting colors. 
+By **default** using a <code>github-md</code> tag or attribute will automatically add a CSS style sheet for GitHub like syntax highlighting colors. 
 
-To use Syntax Highlighting with a md tag or attribute, you will need to apply a CSS stylesheet. You can find a list of Syntax Hightlighting Stylesheets that work with <b>Markdown Tag</b> [here](https://github.com/PrismJS/prism-themes)
+To use Syntax Highlighting with a md tag or attribute, you will need to apply a CSS style sheet. You can find a list of Syntax Hightlighting style sheets that work with <b><i>Markdown Tag</i></b> [here](https://github.com/PrismJS/prism-themes)
 
 
 
 ## Handling untrusted content
 
-By default <b>Markdown Tag</b> does not santize the Markdown you provide, since in most use cases the content is trusted.
+By default, <b><i>Markdown Tag</i></b> does not sanitize the content you provide, since in most use cases the content is trusted.
 
-Any other content provided from user's on your website etc. Should be santized before adding it to prevent XSS. 
+Any other content provided from user's on your website etc. Should be sanitized before adding it to prevent XSS. 
 
 
 
