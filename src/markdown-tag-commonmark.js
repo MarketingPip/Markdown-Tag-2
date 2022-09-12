@@ -91,12 +91,12 @@ function markdownToHTML(tags, flavor, isAttribute) {
 			})
 
 			// Stylesheet for attributes
-			addCSSforAttributes('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md_attr.min.css');
+			addCSSforAttributes('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/stylesheets/github_md_attr.min.css');
 
 		} else {
 
 			// Stylesheet for tags
-			addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md.min.css');
+			addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/stylesheets/github_md.min.css');
 
 		}
 
@@ -204,7 +204,7 @@ function loadMarkdownParser() {
 	var script = document.createElement('script');
 	script.src = "https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.umd.min.js";
 
-	document.head.appendChild(script);   
+	document.head.appendChild(script);
 
 
 
