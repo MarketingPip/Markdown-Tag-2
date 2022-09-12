@@ -91,12 +91,12 @@ function markdownToHTML(tags, flavor, isAttribute) {
 			})
 
 			// Stylesheet for attributes
-			addCSSforAttributes('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md_attr.css');
+			addCSSforAttributes('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md_attr.min.css');
 
 		} else {
 
 			// Stylesheet for tags
-			addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md.css');
+			addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md.min.css');
 
 		}
 
