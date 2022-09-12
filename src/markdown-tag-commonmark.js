@@ -6,14 +6,27 @@
  */
 
 
+// To Enable Debug Messages - set this to true
+var DebugMarkdownTag = false;
 
+/* Console Log Debbuger */
+function DEBUG(msg) {
+	if (DebugMarkdownTag === true) {
+		console.log(msg)
+	}
+}
+
+/* Fetch MD files from URL or Path */
 async function getData(src) {
 	try {
+		DEBUG("Fetching File From URL or Path")
 		const res = await fetch(src);
 		const jsonResult = await res.text();
 		if (jsonResult === "Not Found") {
+			DEBUG("Error rendering content -  file path was not found")
 			throw 'Error rendering markdown contents - file Path Not Found';
 		} else {
+			DEBUG("File was loaded successfully")
 			return jsonResult
 		}
 
@@ -32,8 +45,8 @@ var Tag_CSSAdded = false;
 var Attribute_CSSAdded = false;
 
 function addCSSforTag(fileName) {
-
 	if (Tag_CSSAdded == false) {
+		DEBUG("Added CSS for Tag(s)")
 		var head = document.head;
 		var link = document.createElement("link");
 
@@ -52,6 +65,7 @@ function addCSSforTag(fileName) {
 
 function addCSSforAttributes(fileName) {
 	if (Attribute_CSSAdded == false) {
+		DEBUG("Added CSS for Attribute(s)")
 		var head = document.head;
 		var link = document.createElement("link");
 
@@ -67,7 +81,7 @@ function addCSSforAttributes(fileName) {
 
 
 function markdownToHTML(tags, flavor, isAttribute) {
-
+	DEBUG("Converting Markdown To HTML")
 	if (flavor === "GFM") {
 
 		// if attribute type - it requires a class added. 
@@ -113,8 +127,6 @@ function markdownToHTML(tags, flavor, isAttribute) {
 }
 
 
-var Debug = false;
-
 
 function renderMarkdown() {
 
@@ -125,7 +137,7 @@ function renderMarkdown() {
 
 	if (document.querySelectorAll('[md]').length > 0) {
 
-
+		DEBUG("MD attribute(s) were found, coverting content to Markdown")
 		MD_TAGs = document.querySelectorAll('[md]');
 
 
@@ -141,6 +153,7 @@ function renderMarkdown() {
 
 	if (document.querySelectorAll('[github-md]').length > 0) {
 
+		DEBUG("github-md attribute(s) were found, coverting content to Markdown")
 
 		GitHub_MD_TAGs = document.querySelectorAll('[github-md]');
 
@@ -153,6 +166,8 @@ function renderMarkdown() {
 	/* Convert Markdown Tags */
 
 	if (document.getElementsByTagName("md").length > 0) {
+
+		DEBUG("md tag(s) were found, coverting content to Markdown")
 
 		MDTAGs = document.querySelectorAll('md');
 
@@ -168,6 +183,7 @@ function renderMarkdown() {
 
 	if (document.getElementsByTagName("github-md").length > 0) {
 
+		DEBUG("github-md tag(s) were found, coverting content to Markdown")
 
 		GitHub_MD_TAGs = document.querySelectorAll("github-md");
 
@@ -183,12 +199,12 @@ function renderMarkdown() {
 
 
 function loadMarkdownParser() {
-
+	DEBUG("Adding Markdown Parser To HTML document")
 	/// Add Markdown Parser To Document
 	var script = document.createElement('script');
 	script.src = "https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.umd.min.js";
 
-	document.head.appendChild(script); //or something of the likes  
+	document.head.appendChild(script);   
 
 
 
@@ -205,7 +221,7 @@ function loadMarkdownParser() {
 	script.onload = function() {
 
 		// Let the Magic Begin 
-
+		DEBUG("Markdown Parser Load Successful")
 		renderMarkdown()
 
 	};
