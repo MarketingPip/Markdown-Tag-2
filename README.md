@@ -92,6 +92,15 @@ renderMarkdown();
 ```
 
 
+<br>
+
+How to prevent <b>Flash of Unstyled Content</b>:
+
+<b><i>Markdowb Tag</i></b> adds a <code>md-rendered</code> attribute after the element(s) content(s) has been rendered to HTML. This allows you to style / hide unrendered content until it is rendered however you please (via JavaScript page loader, CSS or etc), here is a basic example of hiding un-rendered content using a <code>:not()</code> CSS selector.
+
+```css
+github-md:not([md-rendered]) { display: none }
+```
 
 ## Syntax
 
