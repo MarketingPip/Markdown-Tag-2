@@ -11,23 +11,23 @@
 var DebugMarkdownTag = false;
 
 /* Console Log Debbuger */
-function DEBUG(msg) {
-	if (DebugMarkdownTag === true) {
-		console.log(msg)
-	}
+function DEBUG(msg){
+  if (DebugMarkdownTag === true){
+    console.log(msg)
+  }
 }
 
 /* Fetch MD files from URL or Path */
 async function getData(src) {
 	try {
-		DEBUG("Fetching File From URL or Path")
+      DEBUG("Fetching File From URL or Path")
 		const res = await fetch(src);
 		const jsonResult = await res.text();
 		if (jsonResult === "Not Found") {
-			DEBUG("Error rendering content -  file path was not found")
+        DEBUG("Error rendering content -  file path was not found")
 			throw 'Error rendering markdown contents - file Path Not Found';
 		} else {
-			DEBUG("File was loaded successfully")
+            DEBUG("File was loaded successfully")
 			return jsonResult
 		}
 
@@ -49,7 +49,7 @@ var Attribute_CSSAdded = false;
 
 function addCSSforTag(fileName) {
 	if (Tag_CSSAdded == false) {
-		DEBUG("Added CSS for Tag(s)")
+     DEBUG("Added CSS for Tag(s)")
 		var head = document.head;
 		var link = document.createElement("link");
 
@@ -68,7 +68,7 @@ function addCSSforTag(fileName) {
 
 function addCSSforAttributes(fileName) {
 	if (Attribute_CSSAdded == false) {
-		DEBUG("Added CSS for Attribute(s)")
+     DEBUG("Added CSS for Attribute(s)")
 		var head = document.head;
 		var link = document.createElement("link");
 
@@ -84,7 +84,7 @@ function addCSSforAttributes(fileName) {
 
 
 function markdownToHTML(tags, flavor, isAttribute) {
-	DEBUG("Converting Markdown To HTML")
+ DEBUG("Converting Markdown To HTML")
 	if (flavor === "GFM") {
 		// if attribute type - it requires a class added. 
 		var converter = new showdown.Converter()
@@ -94,17 +94,27 @@ function markdownToHTML(tags, flavor, isAttribute) {
 				tag.classList.add("github-md");
 			})
 
-			// Stylesheet for attributes
-			addCSSforAttributes('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/stylesheets/github_md_attr.min.css');
+						// Stylesheet for attributes
+      addCSSforAttributes('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md_attr.min.css');
 
 		} else {
-
-			// Stylesheet for tags
-			addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/stylesheets/github_md.min.css');
+	 
+      	// Stylesheet for tags
+      addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/stylesheets/github_md.min.css');
 
 		}
+           
+      
 
+    converter.setOption('omitExtraWLInCodeBlocks', 'on')
+    
+    
+    converter.setOption('literalMidWordUnderscores', 'on')
+
+    
+    
 		converter.setOption('tables', 'on')
+    converter.setOption('tablesHeaderId', 'true')
 
 		converter.setOption('emoji', 'on')
 
@@ -134,13 +144,13 @@ function markdownToHTML(tags, flavor, isAttribute) {
 			getData(tag.getAttribute("src")).then(data => {
 				if (data instanceof Error) {
 					// error fetching file
-					tag.innerHTML = converter.makeHtml("Error - file not found!")
-					tag.setAttribute("md-rendered", '')
+					tag.innerHTML = converter.makeHtml("Error rendering file to markdown")
+          tag.setAttribute("md-rendered-error", '') 
 				} else {
 
 					// there was NOT an error fetching file / URL content
 					tag.innerHTML = converter.makeHtml(data)
-					tag.setAttribute("md-rendered", '')
+          tag.setAttribute("md-rendered", '') 
 				}
 			})
 
@@ -148,9 +158,9 @@ function markdownToHTML(tags, flavor, isAttribute) {
 		// Tag does NOT have src attribute
 		else {
 			// render markdown content in md tag or attribute
-			tag.setAttribute("md-rendered", '')
+        tag.setAttribute("md-rendered", '') 
 			tag.innerHTML = converter.makeHtml(tag.innerHTML.replace(/&gt;/g, '>'))
-
+      
 		}
 
 	});
@@ -169,7 +179,7 @@ function renderMarkdown() {
 
 	if (document.querySelectorAll('[md]').length > 0) {
 
-		DEBUG("MD attribute(s) were found, coverting content to Markdown")
+    DEBUG("MD attribute(s) were found, coverting content to Markdown")
 		MD_TAGs = document.querySelectorAll('[md]');
 
 
@@ -185,7 +195,7 @@ function renderMarkdown() {
 
 	if (document.querySelectorAll('[github-md]').length > 0) {
 
-		DEBUG("github-md attribute(s) were found, coverting content to Markdown")
+     DEBUG("github-md attribute(s) were found, coverting content to Markdown")
 
 		GitHub_MD_TAGs = document.querySelectorAll('[github-md]');
 
@@ -198,8 +208,8 @@ function renderMarkdown() {
 	/* Convert Markdown Tags */
 
 	if (document.getElementsByTagName("md").length > 0) {
-		DEBUG("md tag(s) were found, coverting content to Markdown")
-
+        DEBUG("md tag(s) were found, coverting content to Markdown")
+    
 		MDTAGs = document.querySelectorAll('md');
 
 
@@ -213,7 +223,7 @@ function renderMarkdown() {
 
 
 	if (document.getElementsByTagName("github-md").length > 0) {
-		DEBUG("github-md tag(s) were found, coverting content to Markdown")
+    DEBUG("github-md tag(s) were found, coverting content to Markdown")
 
 		GitHub_MD_TAGs = document.querySelectorAll("github-md");
 
@@ -229,7 +239,7 @@ function renderMarkdown() {
 
 
 function loadMarkdownParser() {
-	DEBUG("Adding Markdown Parser To HTML document")
+ DEBUG("Adding Markdown Parser To HTML document")
 	/// Add Markdown Parser To Document
 	var script = document.createElement('script');
 	script.src = "https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/parsers/showdown.min.js";
@@ -251,7 +261,7 @@ function loadMarkdownParser() {
 	script.onload = function() {
 
 		// Let the Magic Begin 
-		DEBUG("Markdown Parser Load Successful")
+ DEBUG("Markdown Parser Load Successful")
 		renderMarkdown()
 
 	};
