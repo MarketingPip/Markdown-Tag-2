@@ -96,7 +96,7 @@ renderMarkdown();
 
 How to prevent <b>Flash of Unstyled Content</b>:
 
-<b><i>Markdowb Tag</i></b> adds a <code>md-rendered</code> attribute after the element(s) content(s) has been rendered to HTML. This allows you to style / hide unrendered content until it is rendered however you please (via JavaScript page loader, CSS or etc), here is a basic example of hiding un-rendered content using a <code>:not()</code> CSS selector.
+<b><i>Markdown Tag</i></b> adds a <code>md-rendered</code> attribute after the element(s) content(s) has been rendered to HTML. This allows you to style / hide unrendered content until it is rendered however you please (via JavaScript page loader, CSS or etc), here is a basic example of hiding un-rendered content using a <code>:not()</code> CSS selector.
 
 ```css
 github-md:not([md-rendered]) { display: none }
@@ -126,11 +126,11 @@ How to use <b><i>GitHub Flavored Markdown Syntax</b></i>:
 
 ## Syntax Highlighting 
 
+> Note: By **default** using a <code>github-md</code> tag or attribute will automatically add Syntax Highlighting & a CSS style sheet for GitHub like syntax highlighting colors. 
+
 To use Syntax Highlighting - you need to add a <code>highlight</code> attribute. Example below 
 
      <md highlight></md>
-
-By **default** using a <code>github-md</code> tag or attribute will automatically add a CSS style sheet for GitHub like syntax highlighting colors. 
 
 To use Syntax Highlighting with a <code>md</code> tag or attribute, you will need to apply a CSS style sheet. You can find a list of Syntax Hightlighting style sheets that work with <b><i>Markdown Tag</i></b> [here](https://github.com/PrismJS/prism-themes)
 
