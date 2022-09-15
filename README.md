@@ -58,7 +58,7 @@ How to use <b><i>Markdown Tag</b></i>:
 
 <br>
 
-How to render a <b>File</b> inside a <b><i>Markdown Tag</b></i>:
+How to render a <b>file</b> inside a <b><i>Markdown Tag</b></i>:
 
 You can render file content from a URL or path to file by adding a <code>src</code> attribute like so -
 
@@ -126,11 +126,13 @@ How to use <b><i>GitHub Flavored Markdown Syntax</b></i>:
 
 ## Syntax Highlighting 
 
-> Note: to use Syntax Highlighting - you must use the GitHub flavored version of <b><i>Markdown Tag</i></b>.
+To use Syntax Highlighting - you need to add a <code>highlight</code> attribute. Example below 
+
+     <md highlight></md>
 
 By **default** using a <code>github-md</code> tag or attribute will automatically add a CSS style sheet for GitHub like syntax highlighting colors. 
 
-To use Syntax Highlighting with a md tag or attribute, you will need to apply a CSS style sheet. You can find a list of Syntax Hightlighting style sheets that work with <b><i>Markdown Tag</i></b> [here](https://github.com/PrismJS/prism-themes)
+To use Syntax Highlighting with a <code>md</code> tag or attribute, you will need to apply a CSS style sheet. You can find a list of Syntax Hightlighting style sheets that work with <b><i>Markdown Tag</i></b> [here](https://github.com/PrismJS/prism-themes)
 
 
 
