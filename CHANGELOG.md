@@ -3,6 +3,22 @@
 All notable changes to this project are documented in this file.
 
 
+## [1.0.4] - 2022-09-DATEADD
+
+### Added
+
+- Feature to render <code>md</code> &<code>github-md</code> attributes to markdown. 
+- Feature to render files to markdown from a URL or path.
+- Improved option for syntax highlighting.
+- Added <code>md-rendered</code> attribute after contents have been rendered. (for <b>FOUC</b>)
+
+### Removed 
+
+- Changes to parser option settings.
+
+
+
+
 ## [1.0.3] - 2022-09-07
 
 ### Added
