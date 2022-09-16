@@ -5,6 +5,8 @@ All notable changes to this project are documented in this file.
 
 ## [1.0.4] - 2022-09-DATEADD
 
+This release brings major improvements to <b><i>Markdown Tag</i></b>. Code quality & much more has been significantly improved. Steps have been taken to try & prevent any breaking changes across any sites / users etc using this JavaScript library.
+
 ### Added
 
 - Feature to render <code>md</code> &<code>github-md</code> attributes to markdown. 
@@ -15,7 +17,14 @@ All notable changes to this project are documented in this file.
 ### Removed 
 
 - Changes to parser option settings.
+  - To use GFM you MUST use <code>markdown-tag-gfm.js</code>
 
+
+### Note(s)
+
+- To avoid any breaking changes
+  - Re-structured repo (moved files)
+- <code>markdown-tag-Github.js</code> has been renamed to <code>markdown-tag-gfm.js</code>
 
 
 
