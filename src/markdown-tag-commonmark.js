@@ -288,7 +288,7 @@ function loadMarkdownParser() {
 	var script = document.createElement('script');
 	script.src = "https://cdn.jsdelivr.net/npm/marked@latest/lib/marked.umd.min.js";
 
-	document.head.appendChild(script); //or something of the likes  
+	document.head.appendChild(script);
 
 
 
