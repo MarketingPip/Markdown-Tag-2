@@ -8,7 +8,7 @@
 
 
 // To Enable Debug Messages - set this to true
-var DebugMarkdownTag = true;
+var DebugMarkdownTag = false;
 
 /* Console Log Debbuger */
 function DEBUG(msg) {
@@ -339,7 +339,7 @@ function loadMarkdownParser() {
 	var script = document.createElement('script');
 	script.src = "https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/parsers/showdown.min.js";
 
-	document.head.appendChild(script); //or something of the likes  
+	document.head.appendChild(script);   
 
 
 
