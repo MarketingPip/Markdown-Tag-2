@@ -1,7 +1,7 @@
 /**!
  * @license Markdown-Tag - Add Markdown to any HTML using a <md> tag or md attribute
  * LICENSED UNDER GPL-3.0 LICENSE
- * MARKDOWN FLAVOUR: GFM FLAVORED MARKDOWN. 
+ * MARKDOWN FLAVOUR: GITHUB FLAVORED MARKDOWN. 
  * MORE INFO / FLAVOR OPTIONS CAN BE FOUND AT https://github.com/MarketingPipeline/Markdown-Tag/
  */
 
@@ -148,6 +148,7 @@ SyntaxHighlighterJSAdded = true;
 
         
 	if (flavor === "GFM") {
+    
 		// if attribute type - it requires a class added. 
 		var converter = new showdown.Converter()
 
@@ -198,7 +199,7 @@ SyntaxHighlighterJSAdded = true;
 
 		converter.setOption('simplifiedAutoLink', 'true');
 	} else {
-
+ 
 		var converter = new showdown.Converter()
 		converter.setOption('tables', 'on')
 
@@ -258,7 +259,7 @@ function renderMarkdown() {
 		MD_TAGs = document.querySelectorAll('[md]');
 
 
-		markdownToHTML(MD_TAGs, MarkdownFlavor = null, isAttribute = true)
+		markdownToHTML(MD_TAGs, MarkdownFlavor = "GFM", isAttribute = true)
 
 
 
@@ -288,7 +289,7 @@ function renderMarkdown() {
 		MDTAGs = document.querySelectorAll('md');
 
 
-		markdownToHTML(MDTAGs, MarkdownFlavor = null, isAttribute = false)
+		markdownToHTML(MDTAGs, MarkdownFlavor = "GFM", isAttribute = false)
 
 
 
