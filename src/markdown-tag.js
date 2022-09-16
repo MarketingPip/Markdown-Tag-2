@@ -7,7 +7,7 @@
 
 
 
-// To Enable Debug Messages - set this to true
+  // To Enable Debug Messages - set this to true
 var DebugMarkdownTag = false;
 
 /* Console Log Debbuger */
@@ -16,6 +16,11 @@ function DEBUG(msg){
     console.log(msg)
   }
 }
+
+
+
+function markdownToHTML(tags, flavor, isAttribute, syntax_hightlighting) {
+  
 
 /* Fetch MD files from URL or Path */
 async function getData(src) {
@@ -83,9 +88,67 @@ function addCSSforAttributes(fileName) {
 }
 
 
-function markdownToHTML(tags, flavor, isAttribute) {
+/* CSS for Syntax Highlighting via Prism.js */ 
+
+var SyntaxCSSAdded = false;  
+function addSyntaxHighlightCss(fileName) {
+
+  if (SyntaxCSSAdded == false){
+      var head = document.head;
+  var link = document.createElement("link");
+
+  link.type = "text/css";
+  link.rel = "stylesheet";
+  link.href = fileName;
+
+  head.appendChild(link);
+  SyntaxCSSAdded = true
+   
+  } 
+
+}
+ 
+
+var SyntaxHighlighterJSAdded = false;  
+function addSyntaxHighlighter(){
+ 
+  
+  if (SyntaxHighlighterJSAdded === false){  
+  /// Add Prism.JS to document
+var script = document.createElement('script');
+script.src = "https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.min.js";
+
+document.head.appendChild(script); 
+  
+  
+  
+  
+  // On Error Loading Markdown Parser
+script.onerror = function () {
+ 
+  console.error("Markdown Tag: Error while performing function addSyntaxHighlighter - There was an error loading the Syntax Highlighter");
+  
+}
+
+  
+  /// Markdown Parser Load Successful 
+script.onload = function () {
+ 
+
+    DEBUG("Syntax Highlighter Was Loaded")
+  
+SyntaxHighlighterJSAdded = true;
+  
+   }
+  };    
+}
+  
  DEBUG("Converting Markdown To HTML")
+  
+
+        
 	if (flavor === "GFM") {
+    
 		// if attribute type - it requires a class added. 
 		var converter = new showdown.Converter()
 
@@ -100,14 +163,22 @@ function markdownToHTML(tags, flavor, isAttribute) {
 		} else {
 	 
       	// Stylesheet for tags
-      addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/stylesheets/github_md.min.css');
+      addCSSforTag('https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Elements/stylesheets/github_md.css');
 
 		}
            
-      
+      // Syntax Highlighting Sheet for GitHub like Colors
+    addSyntaxHighlightCss('https://cdn.jsdelivr.net/gh/PrismJS/prism-themes/themes/prism-ghcolors.css');
+  
+     // Load Syntax Highlighter by default for github-md tags or attributes   
+    
+     addSyntaxHighlighter()
+    
 
+    
     converter.setOption('omitExtraWLInCodeBlocks', 'on')
     
+   // converter.setOption('ghCompatibleHeaderId ', 'on')
     
     converter.setOption('literalMidWordUnderscores', 'on')
 
@@ -128,26 +199,27 @@ function markdownToHTML(tags, flavor, isAttribute) {
 
 		converter.setOption('simplifiedAutoLink', 'true');
 	} else {
-
+ 
+		// Standard Flavor Markdown 
+		
 		var converter = new showdown.Converter()
-		converter.setOption('tables', 'on')
-
-		converter.setOption('emoji', 'on')
-
-		converter.setOption('strikethrough', 'on');
-
+		
 	}
 
 	tags.forEach(tag => {
+    if (tag.hasAttribute("highlight")){
+      addSyntaxHighlighter()
+    }
 		if (tag.getAttribute("src")) {
 			// load file / url content
 			getData(tag.getAttribute("src")).then(data => {
 				if (data instanceof Error) {
 					// error fetching file
+          DEBUG("Error rendering file to markdown")
 					tag.innerHTML = converter.makeHtml("Error rendering file to markdown")
           tag.setAttribute("md-rendered-error", '') 
 				} else {
-
+            DEBUG("Rendered file from path or URL to markdown")
 					// there was NOT an error fetching file / URL content
 					tag.innerHTML = converter.makeHtml(data)
           tag.setAttribute("md-rendered", '') 
@@ -157,6 +229,7 @@ function markdownToHTML(tags, flavor, isAttribute) {
 		}
 		// Tag does NOT have src attribute
 		else {
+      DEBUG("Rendered tag or attribute to markdown")
 			// render markdown content in md tag or attribute
         tag.setAttribute("md-rendered", '') 
 			tag.innerHTML = converter.makeHtml(tag.innerHTML.replace(/&gt;/g, '>'))
@@ -200,7 +273,7 @@ function renderMarkdown() {
 		GitHub_MD_TAGs = document.querySelectorAll('[github-md]');
 
 
-		markdownToHTML(GitHub_MD_TAGs, MarkdownFlavor = "GFM", isAttribute = true)
+		markdownToHTML(GitHub_MD_TAGs, MarkdownFlavor = null, isAttribute = true)
 
 	}
 
@@ -229,7 +302,7 @@ function renderMarkdown() {
 
 
 
-		markdownToHTML(GitHub_MD_TAGs, MarkdownFlavor = "GFM", isAttribute = false)
+		markdownToHTML(GitHub_MD_TAGs, MarkdownFlavor = null, isAttribute = false)
 	}
 }
 
