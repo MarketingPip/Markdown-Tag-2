@@ -70,7 +70,7 @@ You can render file content from a URL or path to file by adding a <code>src</co
 <br>
          
 
-How to use <b><i>Markdown Tag</b></i> with <b>GitHub Styling</b>:
+How to use <b><i>Markdown Tag</b></i> with <b>GitHub CSS Styling</b>:
 
 Instead of using a <code>md</code> tag or attribute use <code>github-md</code>
 
@@ -115,10 +115,10 @@ How to use <b><i>CommonMark Syntax</b></i>:
 
 How to use <b><i>GitHub Flavored Markdown Syntax</b></i>:
  
- If you wish to use [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) syntax  use this [script](https://github.com/MarketingPipeline/Markdown-Tag/blob/main/src/markdown-tag-Github.js) instead of the other script's above at the <b>bottom</b> of your HTML document. 
+ If you wish to use [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) syntax  use this [script](https://github.com/MarketingPipeline/Markdown-Tag/blob/main/src/markdown-tag-gfm.js) instead of the other script's above at the <b>bottom</b> of your HTML document. 
  
          
-       <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/dist/markdown-tag-GitHub.min.js"></script> 
+       <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/dist/markdown-tag-gfm.min.js"></script> 
       
  
   <i>Note:</i> This options includes - Tables, GitHub Mentions & More.             
@@ -126,13 +126,13 @@ How to use <b><i>GitHub Flavored Markdown Syntax</b></i>:
 
 ## Syntax Highlighting 
 
-> Note: By **default** using a <code>github-md</code> tag or attribute will automatically add Syntax Highlighting & a CSS style sheet for GitHub like syntax highlighting colors. 
+> Note: By **default** using a <code>github-md</code> tag or attribute will automatically add Syntax Highlighting & a CSS style sheet for syntax highlighting similar to GitHub's syntax color theme. 
 
 To use Syntax Highlighting - you need to add a <code>highlight</code> attribute. Example below 
 
      <md highlight></md>
 
-To use Syntax Highlighting with a <code>md</code> tag or attribute, you will need to apply a CSS style sheet. You can find a list of Syntax Hightlighting style sheets that work with <b><i>Markdown Tag</i></b> [here](https://github.com/PrismJS/prism-themes)
+If using a <code>md</code> tag or attribute, you will need to apply a CSS style sheet for highlighted syntax / highlighted code. You can find a list of Syntax Highlighting style sheets that work with <b><i>Markdown Tag</i></b> [here](https://github.com/PrismJS/prism-themes)
 
 
 
