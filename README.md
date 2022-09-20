@@ -32,7 +32,7 @@ You can view a demo of Markdown Tag in use [here.](https://marketingpipeline.git
 
 How to use <b><i>Markdown Tag</b></i>:
 
- To render Markdown to HTML simply use a md tag  - example below
+ To render Markdown to HTML on your website simply use a md tag  - example below
 
             <md>
     # Markdown Support
@@ -49,7 +49,7 @@ How to use <b><i>Markdown Tag</b></i>:
              </div>
 
 
-   include this [script](https://github.com/MarketingPipeline/Markdown-Tag/blob/main/src/markdown-tag.js) in your HTML document.
+   then include this [script](https://github.com/MarketingPipeline/Markdown-Tag/blob/main/src/markdown-tag.js) in your HTML document.
          
     <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/dist/markdown-tag.min.js" defer></script> 
 
@@ -60,7 +60,7 @@ How to use <b><i>Markdown Tag</b></i>:
 
 How to render a <b>file</b> inside a <b><i>Markdown Tag</b></i>:
 
-You can render file content from a URL or path to file by adding a <code>src</code> attribute like so -
+You can render file content from a URL or path to file into Markdown by adding a <code>src</code> attribute like so -
 
        <md src="https://raw.githubusercontent.com/MarketingPipeline/Markdown-Tag/main/README.md">
        </md>  
